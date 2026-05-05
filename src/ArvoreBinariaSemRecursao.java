@@ -1,7 +1,7 @@
-public class ArvoreBinaria {
+public class ArvoreBinariaSemRecursao {
     No raiz;    //Necessário para iniciar a árvore (definir a raiz)
 
-    public ArvoreBinaria() {
+    public ArvoreBinariaSemRecursao() {
         this.raiz = new No(null);   //A raiz começa null
         System.out.println("Árvore binária criada com sucesso!");
     }
