@@ -4,6 +4,5 @@ public class Main {
 
         arvoreBinaria.inserir(10);
         arvoreBinaria.inserir(5);
-        arvoreBinaria.inserir(7);
     }
 }
