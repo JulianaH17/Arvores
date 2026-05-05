@@ -20,7 +20,7 @@ public class ArvoreBinaria {
 
                 if (atual.getEsquerda() == null) {      //Verificamos se a esquerda do nó atual está vazia
                     No esquerda = new No(conteudo);     //Criamos um novo nó (chamado esquerda)
-                    atual.setEsquerda(esquerda);        //Conectamos o nó esquerda, na esquerda da raiz
+                    atual.setEsquerda(esquerda);        //Conectamos o nó esquerda, na esquerda do nó atual
                     System.out.println("Nó esquerdo: " + esquerda.getConteudo());
                     break;
                 }
@@ -28,6 +28,23 @@ public class ArvoreBinaria {
                     atual = atual.getEsquerda();        //O nó atual vira esse nó esquerdo
                     System.out.println("Nó atual: " + atual.getConteudo());
                 }
+            }
+            else if (conteudo > atual.getConteudo()) {  //Se o conteúdo passado como parâmetro for maior que o conteúdo atual
+
+                if (atual.getDireita() == null) {       //Verifica se a direita do nó atual está vazia
+                    No direita = new No(conteudo);      //Criamos um novo nó (chamado direita)
+                    atual.setDireita(direita);          //Conectamos o nó direita, na direita do nó atual
+                    System.out.println("Nó direito: " + direita.getConteudo());
+                    break;
+                }
+                else {
+                    atual = atual.getDireita();         //O nó atual vira esse nó direito
+                    System.out.println("Nó atual: " + atual.getConteudo());
+                }
+            }
+            else {
+                System.out.println("Não foi possível adicionar esse nó: " + conteudo);
+                break;
             }
         }
     }
