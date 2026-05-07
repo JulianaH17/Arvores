@@ -74,6 +74,21 @@ public class ArvoreBinaria {
         }
     }
 
+    /**
+     * Métod0 {@code inserirR} que faz parte do métod0 {@code inserirRecursivo}, onde é inserido um novo
+     * elemento (do tipo {@code Integer}) na árvore binária de forma recursiva (chamando a si mesma).
+     <p>
+     * O métod0 compara o conteúdo do novo nó com o nó atual.
+     * <ul>
+     *      <li>Se o valor for menor, a inserção é realizada na subárvore esquerda.</li>
+     *      <li>Se o valor for maior, a inserção é realizada na subárvore direita.</li>
+     *      <li>Caso já exista um nó com o mesmo valor, a inserção não é realizada.</li>
+     * </ul>
+     * Caso a árvore esteja vazia, o valor informado será definido como raiz.
+     *
+     * @param novoNo nó que será inserido na árvore.
+     * @param atual nó atual utilizado como referência durante a navegação recursiva.
+     */
     public void inserirR(No novoNo, No atual) {
         if (novoNo.getConteudo() < atual.getConteudo()) {       //Se o conteúdo do novoNo for menor que o conteúdo do nó atual
             if (atual.getEsquerda() == null) {                  //E se a esquerda do nó atual estiver vazia
