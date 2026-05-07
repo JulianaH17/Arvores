@@ -67,6 +67,7 @@ public class ArvoreBinaria {
 
         if (this.raiz.getConteudo() == null) {
             this.raiz = novoNo;        //Caso o elemento inserido seja o primeiro da árvore, ele é definido como raiz
+            System.out.println("Raiz: " + raiz.getConteudo());
         }
         else {                                  //Se ele não for o primeiro:
             inserirR(novoNo, this.raiz);        //Chamada do métod0 recursivo p/ inserir
@@ -77,6 +78,7 @@ public class ArvoreBinaria {
         if (novoNo.getConteudo() < atual.getConteudo()) {       //Se o conteúdo do novoNo for menor que o conteúdo do nó atual
             if (atual.getEsquerda() == null) {                  //E se a esquerda do nó atual estiver vazia
                 atual.setEsquerda(novoNo);                      //Setamos a esquerda do nó atual para o conteúdo inserido
+                System.out.println("\nNó atual: " + atual.getConteudo());
                 System.out.println("Nó esquerdo: " + novoNo.getConteudo());
                 return;
             }
@@ -87,6 +89,7 @@ public class ArvoreBinaria {
         else if (novoNo.getConteudo() > atual.getConteudo()) {  //Caso o conteúdo do novoNo seja maior que o conteúdo do nó atual
             if (atual.getDireita() == null) {                   //E se a direita do nó atual estiver vazia
                 atual.setDireita(novoNo);                       //Setamos a direita do nó atual para o conteúdo inserido
+                System.out.println("\nNó atual: " + atual.getConteudo());
                 System.out.println("Nó direito: " + novoNo.getConteudo());
                 return;
             }
