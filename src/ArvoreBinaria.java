@@ -61,4 +61,29 @@ public class ArvoreBinaria {
             }
         }
     }
+
+    public void inserirRecursivo(Integer conteudo) {
+        No novoNo = new No(conteudo);
+
+        if (this.raiz.getConteudo() == null) {
+            this.raiz = novoNo;        //Caso o elemento inserido seja o primeiro da árvore, ele é definido como raiz
+        }
+        else {                                  //Se ele não for o primeiro:
+            inserirR(novoNo, this.raiz);     //Chamada do métod0 recursivo p/ inserir
+        }
+    }
+
+    public void inserirR(No novoNo, No atual) {
+        if (novoNo.getConteudo() < atual.getConteudo()) {
+            if (atual.getEsquerda() == null) {
+                atual.setEsquerda(novoNo);
+                System.out.println("Nó esquerdo: " + novoNo.getConteudo());
+                return;
+            }
+            else {
+                inserirR(novoNo, atual.getEsquerda());
+            }
+        }
+
+    }
 }
