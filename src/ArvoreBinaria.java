@@ -69,21 +69,33 @@ public class ArvoreBinaria {
             this.raiz = novoNo;        //Caso o elemento inserido seja o primeiro da árvore, ele é definido como raiz
         }
         else {                                  //Se ele não for o primeiro:
-            inserirR(novoNo, this.raiz);     //Chamada do métod0 recursivo p/ inserir
+            inserirR(novoNo, this.raiz);        //Chamada do métod0 recursivo p/ inserir
         }
     }
 
     public void inserirR(No novoNo, No atual) {
-        if (novoNo.getConteudo() < atual.getConteudo()) {
-            if (atual.getEsquerda() == null) {
-                atual.setEsquerda(novoNo);
+        if (novoNo.getConteudo() < atual.getConteudo()) {       //Se o conteúdo do novoNo for menor que o conteúdo do nó atual
+            if (atual.getEsquerda() == null) {                  //E se a esquerda do nó atual estiver vazia
+                atual.setEsquerda(novoNo);                      //Setamos a esquerda do nó atual para o conteúdo inserido
                 System.out.println("Nó esquerdo: " + novoNo.getConteudo());
                 return;
             }
             else {
-                inserirR(novoNo, atual.getEsquerda());
+                inserirR(novoNo, atual.getEsquerda());          //Chamada do métod0 recursivo caso a esquerda do nó atual não esteja vazia
             }
         }
-
+        else if (novoNo.getConteudo() > atual.getConteudo()) {  //Caso o conteúdo do novoNo seja maior que o conteúdo do nó atual
+            if (atual.getDireita() == null) {                   //E se a direita do nó atual estiver vazia
+                atual.setDireita(novoNo);                       //Setamos a direita do nó atual para o conteúdo inserido
+                System.out.println("Nó direito: " + novoNo.getConteudo());
+                return;
+            }
+            else {
+                inserirR(novoNo, atual.getDireita());           //Chamada do métod0 recursivo caso a esquerda do nó atual não estiver vazia
+            }
+        }
+        else {
+            System.out.println("Não foi possível adicionar esse nó: " + novoNo.getConteudo());
+        }
     }
 }
