@@ -116,4 +116,65 @@ public class ArvoreBinaria {
             System.out.println("Não foi possível adicionar esse nó: " + novoNo.getConteudo());
         }
     }
+
+    //Percursos nas árvores binárias
+
+    private void preOrdem(No no) {          //Percurso 1
+        if (no == null) {
+            return;
+        }
+        System.out.println(no.getConteudo());
+        preOrdem(no.getEsquerda());
+        preOrdem(no.getDireita());
+    }
+
+    private void emOrdem(No no) {           //Percurso 2
+        if (no == null) {
+            return;
+        }
+        emOrdem(no.getEsquerda());
+        System.out.println(no.getConteudo());
+        emOrdem(no.getDireita());
+    }
+
+    private void posOrdem(No no) {          //Percurso 3
+        if (no == null) {
+            return;
+        }
+        posOrdem(no.getEsquerda());
+        posOrdem(no.getDireita());
+        System.out.println(no.getConteudo());
+    }
+
+    /**
+     * Métod0 {@code exibirPercursos} que funciona como um encapsulamento dos métod0s privados
+     * {@code preOrdem}, {@code emOrdem} e {@code posOrdem}.
+     * <p>
+     *     Ao ser informado o número correspondente ao percurso:
+     *     <ol>
+     *         <li>preOrdem</li>
+     *         <li>emOrdem</li>
+     *         <li>posOrdem</li>
+     *     </ol>
+     *     Ele retornará a sequência correspondente.
+     * </p>
+     * @param percurso percurso que será informado pelo usuário.
+     */
+    public void exibirPercursos(String percurso) {
+        switch (percurso){
+            case("1"):
+                System.out.println("\n===== PRÉ ORDEM =====");
+                preOrdem(this.raiz);
+                break;
+            case("2"):
+                System.out.println("\n===== EM ORDEM =====");
+                emOrdem(this.raiz);
+                break;
+            case("3"):
+                System.out.println("\n===== PÓS ORDEM =====");
+                posOrdem(this.raiz);
+                break;
+        }
+    }
+
 }

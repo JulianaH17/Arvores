@@ -9,5 +9,9 @@ public class MainIterativo {
         arvoreBinaria.inserirIterativo(4);
         arvoreBinaria.inserirIterativo(6);
         arvoreBinaria.inserirIterativo(1);
+
+        arvoreBinaria.exibirPercursos("1");
+        arvoreBinaria.exibirPercursos("2");
+        arvoreBinaria.exibirPercursos("3");
     }
 }
