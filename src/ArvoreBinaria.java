@@ -1,12 +1,25 @@
-public class ArvoreBinariaSemRecursao {
+public class ArvoreBinaria {
     No raiz;    //Necessário para iniciar a árvore (definir a raiz)
 
-    public ArvoreBinariaSemRecursao() {
+    public ArvoreBinaria() {
         this.raiz = new No(null);   //A raiz começa null
-        System.out.println("Árvore binária criada com sucesso!");
+        System.out.println("Árvore binária criada com sucesso!\n");
     }
 
-    public void inserir(Integer conteudo) {
+    /**
+     * Métod0 {@code inserirIterativo} que insere um novo elemento (do tipo {@code Integer}) na árvore binária de forma iterativa.
+     * <p>
+     * O métod0 percorre a árvore comparando o valor informado com os nós existentes:
+     * <ul>
+     *     <li>Se o valor for menor que o nó atual, segue para a subárvore esquerda.</li>
+     *     <li>Se o valor for maior que o nó atual, segue para a subárvore direita.</li>
+     *     <li>Se o valor já existir na árvore, o elemento não é inserido.</li>
+     * </ul>
+     * Caso a árvore esteja vazia, o valor informado será definido como raiz.
+     *
+     * @param conteudo Valor inteiro que será inserido na árvore.
+     */
+    public void inserirIterativo(Integer conteudo) {
         //Se o conteúdo da raiz for null, setamos o conteúdo passado como parâmetro como a raiz (início)
         if (this.raiz.getConteudo() == null) {
             this.raiz.setConteudo(conteudo);
@@ -26,7 +39,7 @@ public class ArvoreBinariaSemRecursao {
                 }
                 else {
                     atual = atual.getEsquerda();        //O nó atual vira esse nó esquerdo
-                    System.out.println("Nó atual: " + atual.getConteudo());
+                    System.out.println("\nNó atual: " + atual.getConteudo());
                 }
             }
             else if (conteudo > atual.getConteudo()) {  //Se o conteúdo passado como parâmetro for maior que o conteúdo atual
@@ -39,7 +52,7 @@ public class ArvoreBinariaSemRecursao {
                 }
                 else {
                     atual = atual.getDireita();         //O nó atual vira esse nó direito
-                    System.out.println("Nó atual: " + atual.getConteudo());
+                    System.out.println("\nNó atual: " + atual.getConteudo());
                 }
             }
             else {

@@ -1,13 +1,15 @@
 public class Main {
     public static void main(String[] args) {
-        ArvoreBinariaSemRecursao arvoreBinariaSemRecursao = new ArvoreBinariaSemRecursao();
+        ArvoreBinaria arvoreBinaria = new ArvoreBinaria();
 
-        arvoreBinariaSemRecursao.inserir(5);
-        arvoreBinariaSemRecursao.inserir(3);
-        arvoreBinariaSemRecursao.inserir(7);
-        arvoreBinariaSemRecursao.inserir(9);
-        arvoreBinariaSemRecursao.inserir(4);
-        arvoreBinariaSemRecursao.inserir(6);
-        arvoreBinariaSemRecursao.inserir(1);
+        arvoreBinaria.inserirIterativo(5);
+        arvoreBinaria.inserirIterativo(3);
+        arvoreBinaria.inserirIterativo(7);
+        arvoreBinaria.inserirIterativo(9);
+        arvoreBinaria.inserirIterativo(4);
+        arvoreBinaria.inserirIterativo(6);
+        arvoreBinaria.inserirIterativo(1);
+
+
     }
 }
