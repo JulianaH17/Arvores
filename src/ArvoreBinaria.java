@@ -177,4 +177,47 @@ public class ArvoreBinaria {
         }
     }
 
+    //trocar o boolean pelo retorno do nó encontrado
+    public No buscarNo(int procurado, No atual) {
+        if (atual == null) {
+            return null;
+        }
+        if (procurado == atual.getConteudo()) {         //Se o nó atual for igual ao valor que estamos buscando
+            System.out.println("Nó encontrado: " + procurado);
+            return atual;                               //Ele retorna o Nó
+        }
+        else if (procurado < atual.getConteudo()) {     //Se o valor procurado for menor que o conteúdo do nó atual
+            buscarNo(procurado, atual.getEsquerda());   //Busca recursiva pra esquerda
+        }
+        else {
+            buscarNo(procurado, atual.getDireita());    //Caso não seja nenhuma dessas condicionais, busca recursiva pra direita
+        }
+        return null;
+    }
+
+    public No buscarPaiNo (int procurado, No atual) {
+        if (buscarNo(procurado, atual) != null) {       //Se encontramos o nó procurado
+            if (procurado == atual.getEsquerda().getConteudo() || procurado == atual.getDireita().getConteudo()) {  //Espiamos o conteúdo do nó atual pra esquerda ou pra direita
+                System.out.println("Pai encontrado: " + atual.getConteudo());       //Encontramos o nó pai
+                return atual;                           //Retornamos o nó pai do nó procurado
+            }
+            else {
+                if (procurado > atual.getEsquerda().getConteudo()) {
+                    buscarPaiNo(procurado, atual.getDireita());
+                }
+                else {
+                    buscarPaiNo(procurado, atual.getEsquerda());
+                }
+            }
+        }
+        return null;
+    }
+
+    public void buscar(Integer valor){
+        buscarNo(valor, this.raiz);
+    }
+
+    public void buscarpai(Integer valor){
+        buscarPaiNo(valor, this.raiz);
+    }
 }

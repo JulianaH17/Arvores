@@ -13,5 +13,8 @@ public class MainRecursivo {
         arvoreBinaria.exibirPercursos("1");
         arvoreBinaria.exibirPercursos("2");
         arvoreBinaria.exibirPercursos("3");
+
+        arvoreBinaria.buscar(7);
+        arvoreBinaria.buscarpai(7);
     }
 }
