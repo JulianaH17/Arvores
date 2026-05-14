@@ -89,7 +89,7 @@ public class ArvoreBinaria {
      * @param novoNo nó que será inserido na árvore.
      * @param atual nó atual utilizado como referência durante a navegação recursiva.
      */
-    public void inserirR(No novoNo, No atual) {
+    private void inserirR(No novoNo, No atual) {
         if (novoNo.getConteudo() < atual.getConteudo()) {       //Se o conteúdo do novoNo for menor que o conteúdo do nó atual
             if (atual.getEsquerda() == null) {                  //E se a esquerda do nó atual estiver vazia
                 atual.setEsquerda(novoNo);                      //Setamos a esquerda do nó atual para o conteúdo inserido
@@ -177,6 +177,17 @@ public class ArvoreBinaria {
         }
     }
 
+    /**
+     * Métod0 {@code buscarNo} que procura o nó informado pelo usuário dentro da Árvore Binária utilizando
+     * chamadas recursivas:
+     * <ul>
+     *     <li>Valores menores seguem para a esquerda.</li>
+     *     <li>Valores maiores seguem para a direita.</li>
+     * </ul>
+     * @param procurado valor do nó que será buscado.
+     * @param atual nó atual da busca recursiva.
+     * @return o nó encontrado ou null caso não exista.
+     */
     private No buscarNo(int procurado, No atual) {
         if (atual == null) {
             System.out.println("\nNão foi possível encontrar o nó: " + procurado + ", na Árvore!");
@@ -194,6 +205,15 @@ public class ArvoreBinaria {
         }
     }
 
+    /**
+     * Métod0 {@code buscarPaiNo} que busca o nó pai de um valor informado na Árvore Binária.
+     * <p>
+     *    O métod0 percorre recursivamente a árvore verificando se o valor procurado corresponde ao filho esquerdo ou direito do nó atual.
+     * </p>
+     * @param procurado valor do nó cujo o pai será procurado.
+     * @param atual nó atual que será utilizado na busca recursiva.
+     * @return o nó pai do valor procurado ou null caso ele não exista/não possua pai.
+     */
     private No buscarPaiNo (int procurado, No atual) {
         if (atual == null) {        //Caso o nó atual seja nulo, apenas retornamos null
             return null;
@@ -214,6 +234,8 @@ public class ArvoreBinaria {
         }
     }
 
+    //Métod0s para instanciar na Main (teste)
+
     public void buscar(Integer valor){
         buscarNo(valor, this.raiz);
     }
@@ -221,8 +243,23 @@ public class ArvoreBinaria {
     public void buscarPai(Integer valor){
         buscarPaiNo(valor, this.raiz);
     }
-    //buscar -> classificar o tipo de nó -> remover de acordo com a classificação
 
+    /**
+     * Métod0 {@code identificadorDeNo} que identifica o tipo de nó informado, dentro da Árvore Binária, a partir
+     * da quantidade de filhos que ele possui.
+     * <p>
+     *     O métod0 verifica se:
+     * </p>
+     * <ul>
+     *     <li>O nó é folha (não possui filhos).</li>
+     *     <li>Se possui apenas um filho à esquerda.</li>
+     *     <li>Se possui apenas um filho à direita.</li>
+     *     <li>Se possui dois filhos.</li>
+     * </ul>
+     * @param procurado nó que será identificado.
+     * @param atual nó atual que será utilizado na busca recursiva.
+     * @return o nó identificado ou null caso o valor não exista na árvore
+     */
     private No identificadorDeNo(int procurado, No atual) {
         No noEncontrado = buscarNo(procurado, atual);       //Busco o nó
             if (noEncontrado != null) {                     //Verifico se ele não é nulo
@@ -246,6 +283,9 @@ public class ArvoreBinaria {
             }
         return null;
     }
+
+    //Métod0 para instanciar na Main (teste)
+
     public void identificadorNo(Integer valor){
         identificadorDeNo(valor, this.raiz);
     }
