@@ -179,6 +179,7 @@ public class ArvoreBinaria {
 
     private No buscarNo(int procurado, No atual) {
         if (atual == null) {
+            System.out.println("\nNão foi possível encontrar o nó: " + procurado + ", na Árvore!");
             return null;
         }
         if (procurado == atual.getConteudo()) {         //Se o nó atual for igual ao valor que estamos buscando
@@ -186,12 +187,11 @@ public class ArvoreBinaria {
             return atual;                               //Ele retorna o Nó
         }
         else if (procurado < atual.getConteudo()) {     //Se o valor procurado for menor que o conteúdo do nó atual
-            buscarNo(procurado, atual.getEsquerda());   //Busca recursiva pra esquerda
+            return buscarNo(procurado, atual.getEsquerda());   //Busca recursiva pra esquerda
         }
         else {
-            buscarNo(procurado, atual.getDireita());    //Caso não seja nenhuma dessas condicionais, busca recursiva pra direita
+            return buscarNo(procurado, atual.getDireita());    //Caso não seja nenhuma dessas condicionais, busca recursiva pra direita
         }
-        return null;
     }
 
     private No buscarPaiNo (int procurado, No atual) {
@@ -214,7 +214,6 @@ public class ArvoreBinaria {
         }
     }
 
-
     public void buscar(Integer valor){
         buscarNo(valor, this.raiz);
     }
@@ -223,4 +222,31 @@ public class ArvoreBinaria {
         buscarPaiNo(valor, this.raiz);
     }
     //buscar -> classificar o tipo de nó -> remover de acordo com a classificação
+
+    private No identificadorDeNo(int procurado, No atual) {
+        No noEncontrado = buscarNo(procurado, atual);       //Busco o nó
+            if (noEncontrado != null) {                     //Verifico se ele não é nulo
+                if (noEncontrado.getEsquerda() == null && noEncontrado.getDireita() == null) {          //Nó sem filhos (nó folha)
+                    System.out.println("Este nó é folha! Ele não possui nenhum filho.");
+                    return noEncontrado;
+                }
+                else if (noEncontrado.getEsquerda() != null && noEncontrado.getDireita() == null) {     //Nó com um filho (apenas à esquerda)
+                    System.out.println("Este nó possui filho à esquerda: " + noEncontrado.getEsquerda().getConteudo());
+                    return noEncontrado;
+                }
+                else if (noEncontrado.getEsquerda() == null && noEncontrado.getDireita() != null) {     //Nó com um filho (apenas à direita)
+                    System.out.println("Este nó possui filho à direita: " + noEncontrado.getDireita().getConteudo());
+                    return noEncontrado;
+                }
+                else {                                                                                  //Nó com dois filhos
+                    System.out.println("Este nó possui dois filhos: " + noEncontrado.getEsquerda().getConteudo() + " (esquerda) e " +
+                            noEncontrado.getDireita().getConteudo() + " (direita)");
+                    return noEncontrado;
+                }
+            }
+        return null;
+    }
+    public void identificadorNo(Integer valor){
+        identificadorDeNo(valor, this.raiz);
+    }
 }

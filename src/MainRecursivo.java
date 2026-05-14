@@ -9,12 +9,15 @@ public class MainRecursivo {
         arvoreBinaria.inserirRecursivo(4);
         arvoreBinaria.inserirRecursivo(6);
         arvoreBinaria.inserirRecursivo(1);
+        arvoreBinaria.inserirRecursivo(2);
 
 //        arvoreBinaria.exibirPercursos("1");
 //        arvoreBinaria.exibirPercursos("2");
 //        arvoreBinaria.exibirPercursos("3");
 
-        arvoreBinaria.buscar(7);
-        arvoreBinaria.buscarPai(6);
+//        arvoreBinaria.buscar(7);
+//        arvoreBinaria.buscarPai(6);
+
+        arvoreBinaria.identificadorNo(1);
     }
 }
