@@ -177,13 +177,12 @@ public class ArvoreBinaria {
         }
     }
 
-    //trocar o boolean pelo retorno do nó encontrado
-    public No buscarNo(int procurado, No atual) {
+    private No buscarNo(int procurado, No atual) {
         if (atual == null) {
             return null;
         }
         if (procurado == atual.getConteudo()) {         //Se o nó atual for igual ao valor que estamos buscando
-            System.out.println("Nó encontrado: " + procurado);
+            System.out.println("\nNó encontrado: " + procurado);
             return atual;                               //Ele retorna o Nó
         }
         else if (procurado < atual.getConteudo()) {     //Se o valor procurado for menor que o conteúdo do nó atual
@@ -195,29 +194,33 @@ public class ArvoreBinaria {
         return null;
     }
 
-    public No buscarPaiNo (int procurado, No atual) {
-        if (buscarNo(procurado, atual) != null) {       //Se encontramos o nó procurado
-            if (procurado == atual.getEsquerda().getConteudo() || procurado == atual.getDireita().getConteudo()) {  //Espiamos o conteúdo do nó atual pra esquerda ou pra direita
-                System.out.println("Pai encontrado: " + atual.getConteudo());       //Encontramos o nó pai
-                return atual;                           //Retornamos o nó pai do nó procurado
-            }
-            else {
-                if (procurado > atual.getEsquerda().getConteudo()) {
-                    buscarPaiNo(procurado, atual.getDireita());
-                }
-                else {
-                    buscarPaiNo(procurado, atual.getEsquerda());
-                }
-            }
+    private No buscarPaiNo (int procurado, No atual) {
+        if (atual == null) {        //Caso o nó atual seja nulo, apenas retornamos null
+            return null;
         }
-        return null;
+        if (atual.getEsquerda() != null && procurado == atual.getEsquerda().getConteudo()) {    //Verifica se o filho esquerdo existe e se ele é o procurado
+            System.out.println("\nPai encontrado: " + atual.getConteudo());                     //Encontramos o nó pai
+            return atual;                                                                       //Retornamos o nó pai do nó procurado
+        }
+        if (atual.getDireita() != null && procurado == atual.getDireita().getConteudo()) {     //Verifica se o filho direito existe e se ele é o procurado
+            System.out.println("\nPai encontrado: " + atual.getConteudo());                    //Encontramos o nó pai
+            return atual;                                                                      //Retornamos o nó pai do nó procurado
+        }
+        if (procurado < atual.getConteudo()) {      //Caso o valor procurado seja menor do que o atual
+            return buscarPaiNo(procurado, atual.getEsquerda());     //Busca recursiva para esquerda
+        }
+        else {                                      //Caso o valor procurado seja maior que o atual
+            return buscarPaiNo(procurado, atual.getDireita());      //Busca recursiva para direita
+        }
     }
+
 
     public void buscar(Integer valor){
         buscarNo(valor, this.raiz);
     }
 
-    public void buscarpai(Integer valor){
+    public void buscarPai(Integer valor){
         buscarPaiNo(valor, this.raiz);
     }
+    //buscar -> classificar o tipo de nó -> remover de acordo com a classificação
 }
