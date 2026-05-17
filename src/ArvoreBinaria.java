@@ -289,4 +289,17 @@ public class ArvoreBinaria {
     public void identificadorNo(Integer valor){
         identificadorDeNo(valor, this.raiz);
     }
+
+    private void removerFolha(int procurado, No noEncontrado) {
+        No paiDaFolha = buscarPaiNo(procurado, noEncontrado);
+        if (paiDaFolha.getEsquerda() == noEncontrado) {
+            paiDaFolha.setEsquerda(null);
+        }
+        else if (paiDaFolha.getDireita() == noEncontrado) {
+            paiDaFolha.setDireita(null);
+        }
+        else {
+            noEncontrado.setConteudo(null);
+        }
+    }
 }
