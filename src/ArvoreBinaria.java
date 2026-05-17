@@ -302,4 +302,14 @@ public class ArvoreBinaria {
             noEncontrado.setConteudo(null);
         }
     }
+
+    private void removerFilhoEsquerdo(int procurado, No noEncontrado) {
+        No paiDoNo = buscarPaiNo(procurado, noEncontrado);
+        if (paiDoNo.getEsquerda() == noEncontrado) {
+            paiDoNo.setEsquerda(noEncontrado.getEsquerda());
+        }
+        else {
+            noEncontrado.setConteudo(null);
+        }
+    }
 }
