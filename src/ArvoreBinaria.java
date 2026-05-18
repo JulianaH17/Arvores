@@ -291,7 +291,7 @@ public class ArvoreBinaria {
     }
 
     private void removerFolha(int procurado, No noEncontrado) {
-        No paiDaFolha = buscarPaiNo(procurado, noEncontrado);
+        No paiDaFolha = buscarPaiNo(procurado, this.raiz);
 
         if(paiDaFolha == null) {
             System.out.println("Nó folha: " + noEncontrado.getConteudo() + " removido com sucesso!");
@@ -308,7 +308,7 @@ public class ArvoreBinaria {
     }
 
     private void removerFilhoEsquerdo(int procurado, No noEncontrado) {
-        No paiDoNo = buscarPaiNo(procurado, noEncontrado);
+        No paiDoNo = buscarPaiNo(procurado, this.raiz);
 
         if(paiDoNo == null) {
             System.out.println("Nó com filho à esquerda: " + noEncontrado.getConteudo() + " removido com sucesso!");
@@ -325,7 +325,7 @@ public class ArvoreBinaria {
     }
 
     private void removerFilhoDireita(int procurado, No noEncontrado) {
-        No paiDoNo = buscarPaiNo(procurado, noEncontrado);
+        No paiDoNo = buscarPaiNo(procurado, this.raiz);
 
         if (paiDoNo == null) {
             System.out.println("Nó com filho à direita: " + noEncontrado.getConteudo() + " removido com sucesso!");
@@ -341,8 +341,20 @@ public class ArvoreBinaria {
         }
     }
 
+    //Métod0s de remoção instânciados para testar na Main
+
     public void removerFolha(Integer valor){
         No noEncontrado = buscarNo(valor, this.raiz);
         removerFolha(valor, noEncontrado);
+    }
+
+    public void removerFilhoEsquerda(Integer valor){
+        No noEncontrado = buscarNo(valor, this.raiz);
+        removerFilhoEsquerdo(valor, noEncontrado);
+    }
+
+    public void removerFilhoDireita(Integer valor){
+        No noEncontrado = buscarNo(valor, this.raiz);
+        removerFilhoDireita(valor, noEncontrado);
     }
 }

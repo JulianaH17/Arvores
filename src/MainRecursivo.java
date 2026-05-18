@@ -10,6 +10,7 @@ public class MainRecursivo {
         arvoreBinaria.inserirRecursivo(6);
         arvoreBinaria.inserirRecursivo(1);
         arvoreBinaria.inserirRecursivo(2);
+        arvoreBinaria.inserirRecursivo(8);
 
 //        arvoreBinaria.exibirPercursos("1");
 //        arvoreBinaria.exibirPercursos("2");
@@ -18,7 +19,11 @@ public class MainRecursivo {
 //        arvoreBinaria.buscar(7);
 //        arvoreBinaria.buscarPai(6);
 
-        arvoreBinaria.identificadorNo(2);
-        arvoreBinaria.removerFolha(2);
+        arvoreBinaria.identificadorNo(9);
+//        arvoreBinaria.removerFolha(2);
+        arvoreBinaria.removerFilhoEsquerda(9);
+
+        arvoreBinaria.identificadorNo(1);
+        arvoreBinaria.removerFilhoDireita(1);
     }
 }
