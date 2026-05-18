@@ -341,6 +341,26 @@ public class ArvoreBinaria {
         }
     }
 
+    private No removerDoisFilhos(int procurado, No noEncontrado) {
+        No paiDoNo = buscarPaiNo(procurado, this.raiz);
+
+        if (paiDoNo == null) {                                      //Se o pai do nó é null, significa que ele é a raiz
+            No sucessor = buscarSucessor(this.raiz.getDireita());   //Buscamos o nó sucessor (menor dos maiores) na subárvore direita
+            this.raiz = sucessor;                                   //Removemos a antiga raiz e substituimos pelo sucessor dela
+            return sucessor;                                        //Retornamos ele quando achamos
+        }
+        return null;
+    }
+
+    private No buscarSucessor(No atual) {
+        if (atual.getEsquerda() == null) {          //Se à esquerda do atual for null
+            return atual;                           //Significa que encontramos o menor dos maiores (sucessor)
+        }
+        else {
+            return buscarSucessor(atual.getEsquerda()); //Caso contrário, continuamos procurando à esquerda
+        }
+    }
+
     //Métod0s de remoção instânciados para testar na Main
 
     public void removerFolha(Integer valor){
