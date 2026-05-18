@@ -292,14 +292,18 @@ public class ArvoreBinaria {
 
     private void removerFolha(int procurado, No noEncontrado) {
         No paiDaFolha = buscarPaiNo(procurado, noEncontrado);
-        if (paiDaFolha.getEsquerda() == noEncontrado) {
+
+        if(paiDaFolha == null) {
+            System.out.println("Nó folha: " + noEncontrado.getConteudo() + " removido com sucesso!");
+            this.raiz = null;                                       //Caso a folha seja a raiz
+        }
+        else if (paiDaFolha.getEsquerda() == noEncontrado) {        //Caso a folha esteja a esquerda do pai
+            System.out.println("Nó folha: " + noEncontrado.getConteudo() + " removido com sucesso!");
             paiDaFolha.setEsquerda(null);
         }
-        else if (paiDaFolha.getDireita() == noEncontrado) {
+        else {                                                      //Caso a folha esteja a direita do pai
+            System.out.println("Nó folha: " + noEncontrado.getConteudo() + " removido com sucesso!");
             paiDaFolha.setDireita(null);
-        }
-        else {
-            noEncontrado.setConteudo(null);
         }
     }
 
@@ -321,5 +325,10 @@ public class ArvoreBinaria {
         else {
             noEncontrado.setConteudo(null);
         }
+    }
+
+    public void removerFolha(Integer valor){
+        No noEncontrado = buscarNo(valor, this.raiz);
+        removerFolha(valor, noEncontrado);
     }
 }

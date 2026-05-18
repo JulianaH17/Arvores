@@ -18,6 +18,7 @@ public class MainRecursivo {
 //        arvoreBinaria.buscar(7);
 //        arvoreBinaria.buscarPai(6);
 
-        arvoreBinaria.identificadorNo(1);
+        arvoreBinaria.identificadorNo(2);
+        arvoreBinaria.removerFolha(2);
     }
 }
