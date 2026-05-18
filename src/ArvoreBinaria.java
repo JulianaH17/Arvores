@@ -309,21 +309,35 @@ public class ArvoreBinaria {
 
     private void removerFilhoEsquerdo(int procurado, No noEncontrado) {
         No paiDoNo = buscarPaiNo(procurado, noEncontrado);
-        if (paiDoNo.getEsquerda() == noEncontrado) {
+
+        if(paiDoNo == null) {
+            System.out.println("Nó com filho à esquerda: " + noEncontrado.getConteudo() + " removido com sucesso!");
+            this.raiz = noEncontrado.getEsquerda();                 //Caso o nó que queremos remover seja a raiz, a raiz se tornará o filho esquerdo
+        }
+        else if (paiDoNo.getEsquerda() == noEncontrado) {           //Caso o nó removido esteja a esquerda do pai
+            System.out.println("Nó com filho à esquerda: " + noEncontrado.getConteudo() + " removido com sucesso!");
             paiDoNo.setEsquerda(noEncontrado.getEsquerda());
         }
         else {
-            noEncontrado.setConteudo(null);
+            System.out.println("Nó com filho à esquerda: " + noEncontrado.getConteudo() + " removido com sucesso!");
+            paiDoNo.setDireita(noEncontrado.getEsquerda());         //Caso o nó removido esteja a direita do pai
         }
     }
 
     private void removerFilhoDireita(int procurado, No noEncontrado) {
         No paiDoNo = buscarPaiNo(procurado, noEncontrado);
-        if (paiDoNo.getDireita() == noEncontrado) {
-            paiDoNo.setDireita(noEncontrado.getDireita());
+
+        if (paiDoNo == null) {
+            System.out.println("Nó com filho à direita: " + noEncontrado.getConteudo() + " removido com sucesso!");
+            this.raiz = noEncontrado.getDireita();                  //Caso o nó que queremos remover seja a raiz, pegamos o sucessor dele
+        }
+        else if (paiDoNo.getEsquerda() == noEncontrado) {           //Caso o nó removido esteja a esquerda do pai
+            System.out.println("Nó com filho à direita: " + noEncontrado.getConteudo() + " removido com sucesso!");
+            paiDoNo.setEsquerda(noEncontrado.getDireita());         //Setamos o pai do nó removido para apontar para o filho direito do nó removido
         }
         else {
-            noEncontrado.setConteudo(null);
+            System.out.println("Nó com filho à direita: " + noEncontrado.getConteudo() + " removido com sucesso!");
+            paiDoNo.setDireita(noEncontrado.getDireita());          //Caso o nó removido estaja a direita do pai
         }
     }
 
