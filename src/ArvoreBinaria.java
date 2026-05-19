@@ -499,6 +499,41 @@ public class ArvoreBinaria {
 
     //Professor, acabei de perceber que esse métod0 é quase igual ao métod0 de identicar o nó :')
 
+    /**
+     * Métod0 {@code remover} que remove um nó da árvore binária
+     * a partir do valor informado pelo usuário.
+     * <p>
+     *     O métod0 localiza o nó correspondente ao valor procurado
+     *     e identifica qual tipo de remoção deve ser realizada,
+     *     direcionando-a para métodos específicos.
+     * </p>
+     * <p>
+     *     Casos tratados:
+     * <ul>
+     *     <li>
+     *         Se o valor informado não existir na árvore,
+     *         a remoção não é realizada.
+     *     </li>
+     *     <li>
+     *         Se o nó encontrado for uma folha,
+     *         o métod0 {@code removerFolha} é utilizado.
+     *     </li>
+     *     <li>
+     *         Se o nó possuir apenas um filho à esquerda,
+     *         o métod0 {@code removerFilhoEsquerdo} é utilizado.
+     *     </li>
+     *     <li>
+     *         Se o nó possuir apenas um filho à direita,
+     *         o métod0 {@code removerFilhoDireito} é utilizado.
+     *     </li>
+     *     <li>
+     *         Se o nó possuir dois filhos,
+     *         o métod0 {@code removerDoisFilhos} é utilizado.
+     *     </li>
+     * </ul>
+     * </p>
+     * @param procurado valor do nó que será removido da árvore.
+     */
     public void remover(int procurado) {
         No noEncontrado = buscarNo(procurado, this.raiz);
 
@@ -509,14 +544,14 @@ public class ArvoreBinaria {
         else if (noEncontrado.getEsquerda() == null && noEncontrado.getDireita() == null) {     //Nó folha
             removerFolha(procurado, noEncontrado);
         }
-        else if (noEncontrado.getEsquerda() != null && noEncontrado.getDireita() == null) {
+        else if (noEncontrado.getEsquerda() != null && noEncontrado.getDireita() == null) {     //Nó com apenas um filho à esquerda
             removerFilhoEsquerdo(procurado, noEncontrado);
         }
-        else if (noEncontrado.getEsquerda() == null && noEncontrado.getDireita() != null) {
+        else if (noEncontrado.getEsquerda() == null && noEncontrado.getDireita() != null) {     //Nó com apenas um filho à esquerda
             removerFilhoDireito(procurado, noEncontrado);
         }
         else {
-            removerDoisFilhos(procurado, noEncontrado);
+            removerDoisFilhos(procurado, noEncontrado);                                         //Nó com dois filhos
         }
     }
 }
