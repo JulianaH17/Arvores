@@ -234,16 +234,6 @@ public class ArvoreBinaria {
         }
     }
 
-    //Métod0s para instanciar na Main (teste)
-
-    public void buscar(Integer valor){
-        buscarNo(valor, this.raiz);
-    }
-
-    public void buscarPai(Integer valor){
-        buscarPaiNo(valor, this.raiz);
-    }
-
     /**
      * Métod0 {@code identificadorDeNo} que identifica o tipo de nó informado, dentro da Árvore Binária, a partir
      * da quantidade de filhos que ele possui.
@@ -372,7 +362,7 @@ public class ArvoreBinaria {
     }
 
     /**
-     * Métod0 {@code removerFilhoDireita} que remove um nó
+     * Métod0 {@code removerFilhoDireito} que remove um nó
      * com apenas um filho à direita.
      * <p>
      *     O métod0 localiza o pai do nó informado e substitui o nó
@@ -401,7 +391,7 @@ public class ArvoreBinaria {
      * @param procurado valor utilizado para localizar o pai do nó removido.
      * @param noEncontrado referência para o nó que será removido da árvore.
      */
-    private void removerFilhoDireita(int procurado, No noEncontrado) {
+    private void removerFilhoDireito(int procurado, No noEncontrado) {
         No paiDoNo = buscarPaiNo(procurado, this.raiz);
 
         if (paiDoNo == null) {
@@ -507,26 +497,26 @@ public class ArvoreBinaria {
         }
     }
 
-    //Métod0s de remoção instânciados para testar na Main
+    //Professor, acabei de perceber que esse métod0 é quase igual ao métod0 de identicar o nó :')
 
-    public void removerFolha(Integer valor){
-        No noEncontrado = buscarNo(valor, this.raiz);
-        removerFolha(valor, noEncontrado);
+    public void remover(int procurado) {
+        No noEncontrado = buscarNo(procurado, this.raiz);
+
+        if (noEncontrado == null) {             //Se não encontrarmos o nó buscado
+            System.out.println("Não foi possível remover este nó!");
+            return;
+        }
+        else if (noEncontrado.getEsquerda() == null && noEncontrado.getDireita() == null) {     //Nó folha
+            removerFolha(procurado, noEncontrado);
+        }
+        else if (noEncontrado.getEsquerda() != null && noEncontrado.getDireita() == null) {
+            removerFilhoEsquerdo(procurado, noEncontrado);
+        }
+        else if (noEncontrado.getEsquerda() == null && noEncontrado.getDireita() != null) {
+            removerFilhoDireito(procurado, noEncontrado);
+        }
+        else {
+            removerDoisFilhos(procurado, noEncontrado);
+        }
     }
-
-    public void removerFilhoEsquerda(Integer valor){
-        No noEncontrado = buscarNo(valor, this.raiz);
-        removerFilhoEsquerdo(valor, noEncontrado);
-    }
-
-    public void removerFilhoDireita(Integer valor){
-        No noEncontrado = buscarNo(valor, this.raiz);
-        removerFilhoDireita(valor, noEncontrado);
-    }
-
-    public void removerDoisFilhos(Integer valor) {
-        No noEncontrado = buscarNo(valor, this.raiz);
-        removerDoisFilhos(valor, noEncontrado);
-    }
-
 }
