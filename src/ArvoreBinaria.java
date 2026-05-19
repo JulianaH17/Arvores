@@ -290,6 +290,24 @@ public class ArvoreBinaria {
         identificadorDeNo(valor, this.raiz);
     }
 
+    /**
+     * Métod0 {@code removerFolha} que remove um nó folha da árvore binária.
+     * <p>
+     *     O métod0 localiza o pai do nó informado e desfaz a ligação
+     *     entre eles, removendo o nó da estrutura da árvore.
+     * </p>
+     *
+     * <p>
+     *     Casos tratados:
+     * <ul>
+     *   <li>Se o nó folha for a raiz da árvore, a raiz passa a ser {@code null}.</li>
+     *   <li>Se o nó estiver à esquerda do pai, o ponteiro esquerdo do pai é removido.</li>
+     *   <li>Se o nó estiver à direita do pai, o ponteiro direito do pai é removido.</li>
+     * </ul>
+     * </p>
+     * @param procurado valor utilizado para localizar o pai do nó que iremos remover.
+     * @param noEncontrado referência para o nó folha que será removido da árvore.
+     */
     private void removerFolha(int procurado, No noEncontrado) {
         No paiDaFolha = buscarPaiNo(procurado, this.raiz);
 
@@ -307,6 +325,35 @@ public class ArvoreBinaria {
         }
     }
 
+    /**
+     * Métod0 {@code removerFilhoEsquerdo} que remove um nó com apenas um filho à esquerda.
+     * <p>
+     *     O métod0 localiza o pai do nó informado e substitui o nó
+     *     removido pelo seu filho esquerdo, mantendo a ligação
+     *     correta na estrutura da árvore binária.
+     * </p>
+     * <p>
+     *     Casos tratados:
+     * <ul>
+     *     <li>
+     *         Se o nó removido for a raiz da árvore,
+     *         a raiz passa a ser o filho esquerdo do nó removido.
+     *     </li>
+     *     <li>
+     *         Se o nó removido estiver à esquerda do pai,
+     *         o ponteiro esquerdo do pai passa a apontar
+     *         para o filho esquerdo do nó removido.
+     *     </li>
+     *     <li>
+     *         Se o nó removido estiver à direita do pai,
+     *         o ponteiro direito do pai passa a apontar
+     *         para o filho esquerdo do nó removido.
+     *     </li>
+     * </ul>
+     * </p>
+     * @param procurado valor utilizado para localizar o pai do nó removido.
+     * @param noEncontrado referência para o nó com o filho à esquerda que será removido da árvore.
+     */
     private void removerFilhoEsquerdo(int procurado, No noEncontrado) {
         No paiDoNo = buscarPaiNo(procurado, this.raiz);
 
@@ -324,6 +371,36 @@ public class ArvoreBinaria {
         }
     }
 
+    /**
+     * Métod0 {@code removerFilhoDireita} que remove um nó
+     * com apenas um filho à direita.
+     * <p>
+     *     O métod0 localiza o pai do nó informado e substitui o nó
+     *     removido pelo seu filho direito, preservando a estrutura
+     *     da árvore binária.
+     * </p>
+     * <p>
+     *     Casos tratados:
+     * <ul>
+     *     <li>
+     *         Se o nó removido for a raiz da árvore,
+     *         a raiz passa a ser o filho direito do nó removido.
+     *     </li>
+     *     <li>
+     *         Se o nó removido estiver à esquerda do pai,
+     *         o ponteiro esquerdo do pai passa a apontar
+     *         para o filho direito do nó removido.
+     *     </li>
+     *     <li>
+     *         Se o nó removido estiver à direita do pai,
+     *         o ponteiro direito do pai passa a apontar
+     *         para o filho direito do nó removido.
+     *     </li>
+     * </ul>
+     * </p>
+     * @param procurado valor utilizado para localizar o pai do nó removido.
+     * @param noEncontrado referência para o nó que será removido da árvore.
+     */
     private void removerFilhoDireita(int procurado, No noEncontrado) {
         No paiDoNo = buscarPaiNo(procurado, this.raiz);
 
@@ -341,6 +418,53 @@ public class ArvoreBinaria {
         }
     }
 
+    /**
+     * Métod0 {@code removerDoisFilhos} que remove um nó
+     * com dois filhos da árvore binária.
+     * <p>
+     *     O métod0 utiliza o sucessor em ordem do nó removido
+     *     (menor valor da subárvore direita) para substituir
+     *     o nó removido, preservando a organização da árvore.
+     * </p>
+     * <p>
+     *     Etapas realizadas:
+     * <ul>
+     *     <li>Localiza o pai do nó que será removido.</li>
+     *     <li>Busca o sucessor do nó removido.</li>
+     *     <li>Localiza o pai do sucessor.</li>
+     *     <li>Reorganiza os ponteiros da árvore.</li>
+     *     <li>Substitui o nó removido pelo sucessor.</li>
+     * </ul>
+     * </p>
+     * <p>
+     *     Casos tratados:
+     * <ul>
+     *     <li>
+     *         Se o sucessor não for o filho direito direto do nó removido,
+     *         o pai do sucessor passa a apontar para o filho direito do sucessor.
+     *     </li>
+     *     <li>
+     *         O sucessor recebe a subárvore direita e a subárvore esquerda
+     *         do nó removido.
+     *     </li>
+     *     <li>
+     *         Se o nó removido for a raiz da árvore,
+     *         o sucessor se torna a nova raiz.
+     *     </li>
+     *     <li>
+     *         Se o nó removido estiver à esquerda do pai,
+     *         o pai passa a apontar para o sucessor.
+     *     </li>
+     *     <li>
+     *         Se o nó removido estiver à direita do pai,
+     *         o pai passa a apontar para o sucessor.
+     *     </li>
+     * </ul>
+     * </p>
+     * @param procurado valor utilizado para localizar o pai do nó removido.
+     * @param noEncontrado referência para o nó que será removido da árvore.
+     * @return o sucessor que substituiu o nó removido na árvore.
+     */
     private No removerDoisFilhos(int procurado, No noEncontrado) {
         No paiDoNo = buscarPaiNo(procurado, this.raiz);                     //Primeiro buscamos o pai do nó que será removido
         No sucessor = buscarSucessor(noEncontrado.getDireita());            //Depois buscamos o sucessor (menor dos maiores)
@@ -366,6 +490,14 @@ public class ArvoreBinaria {
         return sucessor;
     }
 
+    /**
+     * Métod0 {@code buscarSucessor} que percorre recursivamente para a esqueda do nó atual até encontrar o sucessor (menor dos maiores).
+     * <p>
+     *     Caso ele não encontre o sucessor na primeira condicional, ele continua procurando à esquerda até o valor dela ser null.
+     * </p>
+     * @param atual nó atual utilizado na busca pelo sucessor.
+     * @return o nó sucessor encontrado na subárvore.
+     */
     private No buscarSucessor(No atual) {
         if (atual.getEsquerda() == null) {          //Se à esquerda do atual for null
             return atual;                           //Significa que encontramos o menor dos maiores (sucessor)
