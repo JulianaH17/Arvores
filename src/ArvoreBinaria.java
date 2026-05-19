@@ -341,8 +341,6 @@ public class ArvoreBinaria {
         }
     }
 
-    //TERMINAR AMANHÃ!!!!!!
-
     private No removerDoisFilhos(int procurado, No noEncontrado) {
         No paiDoNo = buscarPaiNo(procurado, this.raiz);                     //Primeiro buscamos o pai do nó que será removido
         No sucessor = buscarSucessor(noEncontrado.getDireita());            //Depois buscamos o sucessor (menor dos maiores)
@@ -393,4 +391,10 @@ public class ArvoreBinaria {
         No noEncontrado = buscarNo(valor, this.raiz);
         removerFilhoDireita(valor, noEncontrado);
     }
+
+    public void removerDoisFilhos(Integer valor) {
+        No noEncontrado = buscarNo(valor, this.raiz);
+        removerDoisFilhos(valor, noEncontrado);
+    }
+
 }

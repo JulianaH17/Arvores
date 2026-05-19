@@ -19,11 +19,14 @@ public class MainRecursivo {
 //        arvoreBinaria.buscar(7);
 //        arvoreBinaria.buscarPai(6);
 
-        arvoreBinaria.identificadorNo(9);
+//        arvoreBinaria.identificadorNo(9);
 //        arvoreBinaria.removerFolha(2);
-        arvoreBinaria.removerFilhoEsquerda(9);
+//        arvoreBinaria.removerFilhoEsquerda(9);
 
-        arvoreBinaria.identificadorNo(1);
-        arvoreBinaria.removerFilhoDireita(1);
+//        arvoreBinaria.identificadorNo(1);
+//        arvoreBinaria.removerFilhoDireita(1);
+        arvoreBinaria.exibirPercursos("2");
+        arvoreBinaria.removerDoisFilhos(7);
+        arvoreBinaria.exibirPercursos("2");
     }
 }
